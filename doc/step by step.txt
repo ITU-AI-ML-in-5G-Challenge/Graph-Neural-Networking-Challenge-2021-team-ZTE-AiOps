@@ -1,0 +1,18 @@
+1. copy the code and the trained model checkpoint to your computer and set up envierment
+	1.1 the same requirement as RouteNet TensorFlow implementation provied by BNN (https://github.com/BNN-UPC/GNNetworkingChallenge/tree/2021_Routenet_TF)
+	1.2 copy the code in the zip file sending by the email to your computer (ie：copy to the diretory /GNNetworkingChallenge-2021_Routenet_TF/code_submit/)
+	1.3 copy the training and validation and test data to your computer (ie: /GNNetworkingChallenge-2021_Routenet_TF/data/gnnet-ch21-dataset-train and gnnet-ch21-dataset-validation and gnnet-ch21-dataset-test)
+	1.4 copy the trained model to your computer(ie: /GNNetworkingChallenge-2021_Routenet_TF/trained_model_512_2_512_4_640_4), the trained model is delivered in github https://github.com/sonicke126/ZTE-AIOps-trained-model)
+2. moidy the config.ini file
+	2.1 set 'DIRECTORIES-logs' to your trained model (ie: /GNNetworkingChallenge-2021_Routenet_TF/trained_model_512_2_512_4_640_4), if trained from scratch, set logs to a empty diretory.
+	2.2 set 'DIRECTORIES-test' to your validation data for training (ie: /GNNetworkingChallenge-2021_Routenet_TF/data/gnnet-ch21-dataset-validation)
+	2.3 set 'DIRECTORIES-train' to your train data(ie: /GNNetworkingChallenge-2021_Routenet_TF/data/gnnet-ch21-dataset-train)
+	2.4 set 'RUN_CONFIG-train' to true for traning
+	2.5 set 'HYPERPARAMETERS-learning_rate' to 0.001 or 0.0001 for start training
+3. run the main.py for training
+	3.1 run command line for start traning: python3 main.py 
+	3.2 manually reducing 'HYPERPARAMETERS-learning_rate' when the MAPE reducing slow on training，we set it to 0.000003 on epoch 32 and mape equals 3.27
+	3.3 the training ran about 6-7 hours and we got mape equals 2.56 on the validation data set for predicting queue utilizations
+4. run the generate_submission.py to generate the prediction
+	4.1 set 'DIRECTORIES-test' to your test data for training (ie: /GNNetworkingChallenge-2021_Routenet_TF/data/gnnet-ch21-dataset-test)
+	4.2 run command line for generating submission: python3 generate_submission.py
